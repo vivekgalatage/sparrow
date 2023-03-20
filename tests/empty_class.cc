@@ -7,11 +7,11 @@ class Class {};
 struct Struct {};
 
 TEST(EmptyClass, NoConstraintTest) {
-  sparrow::Trait<Class> no_constraint;
+  sparrow::TypeChecker<Class> no_constraint;
   ASSERT_TRUE(true);
 }
 
 TEST(EmptyClass, NoConstraintStruct) {
-  sparrow::Trait<Struct> no_constraint;
+  sparrow::TypeChecker<Struct> no_constraint;
   ASSERT_TRUE(true);
 }

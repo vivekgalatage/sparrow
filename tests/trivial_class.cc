@@ -11,7 +11,7 @@ class ClassWithAllTrivial {
 };
 
 TEST(TrivialClass, AllTrivialTest) {
-  sparrow::Trait<ClassWithAllTrivial, sparrow::kAllTrivial> all_trivial;
+  sparrow::TypeChecker<ClassWithAllTrivial, sparrow::kAllTrivial> all_trivial;
   ASSERT_TRUE(true);
 }
 
@@ -20,7 +20,7 @@ TEST(TrivialClass, AllTrivialTest) {
 TEST(TrivialClass, AllCustomTest) {
   // This statement will result in compiler error: static_assert failed due to
   // requirement 'custom_copy_constructor()'
-  sparrow::Trait<ClassWithAllTrivial, sparrow::kAllCustom> all_custom;
+  sparrow::TypeChecker<ClassWithAllTrivial, sparrow::kAllCustom> all_custom;
   ASSERT_TRUE(true);
 }
 

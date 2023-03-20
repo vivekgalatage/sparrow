@@ -5,7 +5,7 @@ project(MyProject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-option(USE_COMPILER_ERROR "Set this option to toggle compiler errors. Default: OFF" OFF)
+option(USE_COMPILER_ERROR "Option to toggle compiler errors. Default: OFF" OFF)
 
 # Add Google Test as an external project
 include(FetchContent)
@@ -17,20 +17,17 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 # Add the test executable
-add_executable(
-  sparrow_tests
-  tests/custom_class.cc
-  tests/empty_class.cc
-  tests/trivial_class.cc
-)
+file(GLOB TEST_SOURCES "tests/*.cc")
+
+add_executable(sparrow_tests ${TEST_SOURCES})
 include_directories(tests include)
+
 if(USE_COMPILER_ERROR)
   target_compile_definitions(sparrow_tests PRIVATE -DUSE_COMPILER_ERROR)
 endif()
 
 # Link the test executable with Google Test
 target_link_libraries(sparrow_tests gtest_main)
-
 
 # Register the test with CTest
 include(GoogleTest)
